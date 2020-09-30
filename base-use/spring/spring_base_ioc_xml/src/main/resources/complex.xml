@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <!--复杂对象都在property中赋值-->
+    <bean class="com.crab.entity.ComplexPerson" id="complexPerson">
+        <!--赋空值 -->
+        <property name="name"><null></null></property>
+        <!--ref引用bean-->
+        <property name="address" ref="address"></property>
+
+        <!--list赋值-->
+        <property name="books">
+            <list>
+                <!--内部bean-->
+                 <bean class="com.crab.entity.Book" id="book1">
+                     <property name="name"  value="马士兵"></property>
+                     <property name="author"    value="马士兵"></property>
+                     <property name="price"     value="100"></property>
+                 </bean>
+                <!--外部bean-->
+                <ref bean="book2"></ref>
+            </list>
+        </property>
+
+        <!--map赋值-->
+        <property name="maps" ref="myMap"></property>
+
+        <!--给property赋值-->
+        <property name="properties">
+            <props>
+                <prop key="aaa">aa</prop>
+                <prop key="bbb">bb</prop>
+            </props>
+        </property>
+
+        <!--给数组赋值-->
+        <property name="hobbies">
+            <array>
+                <value>book</value>
+                <value>book</value>
+                <value>movie</value>
+            </array>
+        </property>
+
+        <!--给set赋值-->
+        <property name="sets">
+            <set>
+                <value>11</value>
+                <value>11</value>
+                <value>11</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="address" class="com.crab.entity.Address">
+        <property name="province" value="河北"></property>
+        <property name="city" value="邯郸"></property>
+        <property name="town" value="武安"></property>
+    </bean>
+    <bean id="book2" class="com.crab.entity.Book">
+        <property name="name" value="JVM"></property>
+        <property name="author" value="马士兵"></property>
+        <property name="price" value="1200"></property>
+    </bean>
+
+    <!--级联属性-->
+    <bean class="com.crab.entity.ComplexPerson" id="complexPerson2">
+        <property name="address"    ref="address"/>
+        <property name="address.province"   value="北京"/>
+    </bean>
+
+    <!--util名称空间创建集合类型的bean-->
+    <util:map id="myMap">
+        <entry key="k1" value="v1"></entry>
+        <entry key="k2" value-ref="book2"></entry>
+        <entry key="k3">
+            <bean class="com.crab.entity.Book">
+                <property name="name" value="西游记" ></property>
+                <property name="author" value="吴承恩" ></property>
+                <property name="price" value="100" ></property>
+            </bean>
+        </entry>
+
+
+    </util:map>
+
+
+    <!--继承关系bean，parent指定父类 abstract可抽象父类-->
+    <bean class="com.crab.entity.Person" id="person"  abstract="true"></bean>
+    <bean class="com.crab.entity.Person" id="person2" parent="person">
+        <property name="name" value="child"/>
+    </bean>
+
+    <!--依赖关系-->
+    <bean  class="com.crab.entity.ComplexPerson" depends-on="address, person"/>
+
+    <!--作用域控制 singleton prototype request session-->
+    <bean class="com.crab.entity.Person" id="person3" scope="prototype"/>
+
+
+</beans>

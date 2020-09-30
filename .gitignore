@@ -23,3 +23,9 @@
 hs_err_pid*
 /spring-boot-2.1.0.RELEASE/spring-boot-project/spring-boot-test-autoconfigure/src/test
 test
+/base-use/spring/spring_base/target
+/base-use/spring/spring_base/.idea
+/base-use/spring/spring_base/*.iml
+/base-use/spring/spring_base_ioc_annotation/.idea
+/base-use/spring/spring_base_ioc_annotation/target
+target

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--默认无参函数的赋值-->
+    <bean class="com.crab.entity.Person" id="person">
+        <property name="name"   value="张三"/>
+        <property name="age"    value="18"/>
+        <property name="id"     value="1"/>
+        <property name="gender" value="男"/>
+    </bean>
+<!--    &lt;!&ndash;构造函数赋值  name可省略但必须严格按照构造参数顺序&ndash;&gt;
+    <bean class="com.crab.entity.Person" id="person2">
+        <constructor-arg name="id"  value="1"/>
+        <constructor-arg name="name"  value="1"/>
+        <constructor-arg name="age"  value="1"/>
+        <constructor-arg name="gender"  value="1"/>
+    </bean>
+    &lt;!&ndash;构造函数赋值  name可省略 配合index属性可不按照构造参数顺序&ndash;&gt;
+    <bean class="com.crab.entity.Person" id="person3">
+        <constructor-arg   value="1" index="1"/>
+        <constructor-arg   value="1" index="0"/>
+        <constructor-arg   value="1" index="2"/>
+        <constructor-arg   value="1" index="3"/>
+    </bean>
+    &lt;!&ndash;构造函数赋值  构造参数类型不一致 配合type&ndash;&gt;
+    <bean class="com.crab.entity.Person" id="person4">
+        <constructor-arg   value="1" />
+        <constructor-arg   value="1" />
+        <constructor-arg   value="1" type="java.lang.Integer" />
+    </bean>-->
+</beans>

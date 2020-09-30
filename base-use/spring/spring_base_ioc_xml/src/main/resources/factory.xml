@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--静态工厂-->
+    <bean id="person2"  class="com.crab.factory.StaticPersonFactory" factory-method="getPerson">
+        <constructor-arg name="name" value="lisi"></constructor-arg>
+    </bean>
+
+    <!--实例工厂-->
+    <bean class="com.crab.factory.InstancePersonFactory" id="instancePersonFactory"></bean>
+    <bean class="com.crab.entity.Person" id="person" factory-bean="instancePersonFactory"
+          factory-method="getPerson">
+        <constructor-arg value="xxxx"></constructor-arg>
+    </bean>
+
+    <!--工厂Bean-->
+    <bean class="com.crab.factoryBean.MyFactoryBean" id="myFactoryBean"></bean>
+
+</beans>
