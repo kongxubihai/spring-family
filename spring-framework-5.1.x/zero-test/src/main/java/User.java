@@ -1,3 +1,7 @@
+import org.springframework.beans.factory.InitializingBean;
+
+import javax.annotation.PostConstruct;
+
 /**
  * ClassName: PACKAGE_NAME
  * Function: TODO
@@ -35,4 +39,20 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public User() {
+		System.out.println("默认无参构造函数");
+	}
+
+	@PostConstruct
+	public void initMethod1(){
+		System.out.println("PostConstruct");
+	}
+
+
+	public void initMethod3(){
+		System.out.println("init-method");
+	}
+
+
 }
